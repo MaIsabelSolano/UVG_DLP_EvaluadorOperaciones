@@ -4,6 +4,8 @@ public class InToPost {
     
     public InToPost(Stack<String> input){
 
+        CheckDataType cdt = new CheckDataType();
+
         Stack<String> output = new Stack<String>();
         Stack<String> operators = new Stack<String>();
 
@@ -20,9 +22,23 @@ public class InToPost {
             // 2. Cuando un operador con menor o igual precedencia que el
             //    último elemento del stack de operadores es el siguiente, 
             //    hay que hacer pop el último elemento del stack de
-            //    operadores y pasarlo al del output. 
-
+            //    operadores y pasarlo al del output.
             
+            String element = input.pop();
+
+            // ver si se puede transformar a número
+
+
+            if (cdt.check(element).equals("Integer")) {
+                // regla 1
+                System.out.println("int " + element);
+                int el = Integer.parseInt(element, 0);
+            } 
+            
+            else {
+                //regla 2
+            }
+
         }
 
     }
