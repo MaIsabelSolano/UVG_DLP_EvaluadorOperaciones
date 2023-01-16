@@ -1,13 +1,25 @@
 import java.util.Stack;
 
 public class InToPost {
+
+    private Stack<String> input;
+    private Stack<String> output;
+    private Stack<String> operators;
+
+    private CheckDataType cdt;
     
     public InToPost(Stack<String> input){
 
-        CheckDataType cdt = new CheckDataType();
+        cdt = new CheckDataType();
 
-        Stack<String> output = new Stack<String>();
-        Stack<String> operators = new Stack<String>();
+        this.input = input;
+
+        output = new Stack<String>();
+        operators = new Stack<String>();
+
+    }
+
+    public Stack<String> getOutput() {
 
         while (!input.empty()){
             // Se corre hasta que se vacía la lista de todos
@@ -133,5 +145,7 @@ public class InToPost {
 
         }
 
+        return output;
     }
+
 }

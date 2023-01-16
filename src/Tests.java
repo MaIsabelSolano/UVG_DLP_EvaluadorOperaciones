@@ -21,6 +21,9 @@ public class Tests {
         System.out.println(stack.toString());
 
         InToPost itp = new InToPost(stack);
+        Stack<String> output = itp.getOutput();
+
+        System.out.println(output.toString());
 
 
     }
