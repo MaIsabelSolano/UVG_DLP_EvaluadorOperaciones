@@ -32,12 +32,59 @@ public class InToPost {
             if (cdt.check(element).equals("Integer")) {
                 // regla 1
                 System.out.println("int " + element);
-                int el = Integer.parseInt(element, 0);
+                // int el = Integer.parseInt(element, 0);
+
+                output.push(element);
+
             } 
             
-            else {
+            else if (cdt.check(element).equals("String")) {
                 //regla 2
+
+                System.out.println("op " + element);
+
+                // revisar qué caso es
+
+                if (!operators.isEmpty()){
+
+                    if (element.equals("+") || element.equals("-")) {
+
+                        output.push(operators.pop());
+
+                        operators.push(element);
+
+                    } else if (element.equals("*") || element.equals("/")) {
+
+                        if (output.peek().equals("+") || output.peek().equals("-")) {
+                            
+                            // tiene mayor procedencia, así que solo se añade al stack
+                            operators.push(element);
+
+                        } else {
+
+                            output.push(operators.pop());
+
+                            operators.push(element);
+
+                        }
+    
+                    } else if (element.equals("^")) {
+    
+                    } else if (element.equals("(") || element.equals(")")) {
+
+                    }
+
+                } else {
+
+                    operators.push(element);
+
+                }
             }
+
+            System.out.println("Input: " + input.toString());
+            System.out.println("Output: " + output.toString());
+            System.out.println("Operators: " + operators.toString());
+            System.out.println();
 
         }
 

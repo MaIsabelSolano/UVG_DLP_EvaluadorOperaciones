@@ -15,7 +15,8 @@ public class CheckDataType {
             tipoData = element2.getClass().getSimpleName();
             
         } catch (Exception e) {
-            // TODO: handle exception
+            
+            tipoData = element.getClass().getSimpleName();
         }
 
         return tipoData;

@@ -6,28 +6,21 @@ public class Tests {
 
         Stack<String> stack = new Stack<String>();
 
-        stack.push("1");
+        stack.push(")");
+        stack.push("4");
+        stack.push("*");
         stack.push("2");
-        stack.push("3");
+        stack.push("+");
+        stack.push("5");
+        stack.push("(");
+        stack.push("-");
+        stack.push("2");
+        stack.push("+");
+        stack.push("1");
 
-        for (Object ss : stack){
-            System.out.println(ss);
-        }
+        System.out.println(stack.toString());
 
-        /*
-         * while (!stack.isEmpty()){
-            System.out.print("\n"+stack.peek());
-            stack.pop();
-        }
-         * 
-         */
-
-         InToPost itp = new InToPost(stack);
-
-         //CheckDataType cdt = new CheckDataType();
-
-         //System.out.println(cdt.check("2"));
-
+        InToPost itp = new InToPost(stack);
 
 
     }
