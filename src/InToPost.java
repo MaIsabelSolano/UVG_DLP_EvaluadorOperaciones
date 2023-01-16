@@ -49,28 +49,59 @@ public class InToPost {
 
                     if (element.equals("+") || element.equals("-")) {
 
-                        output.push(operators.pop());
+                        if (operators.peek().equals("(")) {
 
-                        operators.push(element);
-
-                    } else if (element.equals("*") || element.equals("/")) {
-
-                        if (output.peek().equals("+") || output.peek().equals("-")) {
-                            
-                            // tiene mayor procedencia, así que solo se añade al stack
                             operators.push(element);
 
                         } else {
 
                             output.push(operators.pop());
+                            operators.push(element);
 
+                        }
+
+
+                    } else if (element.equals("*") || element.equals("/")) {
+
+                        if (operators.peek().equals("+") || operators.peek().equals("-") || operators.peek().equals("(")) {
+
+                            operators.push(element);
+                                                        
+                        } else {
+
+                            output.push(operators.pop());
                             operators.push(element);
 
                         }
     
                     } else if (element.equals("^")) {
+
+                        if (operators.peek().equals("^")) {
+
+                            output.push(operators.pop());
+                            operators.push(element);
+                            
+                        } else {
+
+                            operators.push(element);
+                        }
+
     
-                    } else if (element.equals("(") || element.equals(")")) {
+                    } else if (element.equals("(")) {
+
+                        operators.push(element);
+
+
+                    } else if (element.equals(")")) {
+
+                        while (!operators.peek().equals("(")) {
+
+                            output.push(operators.pop());
+
+                        }
+
+                        // se llega al (
+                        operators.pop(); // se elimina
 
                     }
 
@@ -80,6 +111,20 @@ public class InToPost {
 
                 }
             }
+
+            System.out.println("Input: " + input.toString());
+            System.out.println("Output: " + output.toString());
+            System.out.println("Operators: " + operators.toString());
+            System.out.println();
+
+        }
+
+        while (!operators.isEmpty()) {
+
+            // Cuando se acaben los números, todos los operandos que 
+            // quedaron se sacan uno a uno del stack de operandos y se
+            // agregan al stack de output
+            output.push(operators.pop());
 
             System.out.println("Input: " + input.toString());
             System.out.println("Output: " + output.toString());
