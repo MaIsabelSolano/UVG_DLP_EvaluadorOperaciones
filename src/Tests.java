@@ -25,6 +25,24 @@ public class Tests {
 
         System.out.println(output.toString());
 
+        Operate operate = new Operate(output);
+        int resultado = operate.Calculate();
+
+        System.out.println("resultado: " + resultado);
+
+        // System.out.println(stack.search("5"));
+
+        Stack<String> prueba = new Stack<String>();
+
+        prueba.push("1");
+        prueba.push("1");
+        prueba.push("1");
+        prueba.push("1");
+
+        prueba.setElementAt("2", 1);
+
+        System.out.println(prueba.toString());
+
 
     }
     
